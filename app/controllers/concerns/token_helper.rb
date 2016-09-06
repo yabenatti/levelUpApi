@@ -20,7 +20,7 @@ module TokenHelper
 
   def create_and_return_token!
     token = self.authentication_tokens.create!(
-      platform: :ios,
+      platform: "ios",
       authentication_token: generate_authentication_token,
       last_used_at: DateTime.current
     )

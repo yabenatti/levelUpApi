@@ -1,8 +1,7 @@
 class AuthenticationTokenStrategy < ::Warden::Strategies::Base
 
   def authenticate!
-    byebug
-    user = User.find_by(id: params['uid'])
+    user = User.find_by(id: params['uid'].to_i)
     return fail!(I18n::t('session.logout.authentication_token.failed')) unless user
 
     token = user.find_token(authentication_token)

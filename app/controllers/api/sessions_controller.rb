@@ -5,7 +5,7 @@ class Api::SessionsController < Api::BaseController
 		user = User.find_by(email: params[:email])
 
 		if user && user.authenticate(params[:password])
-			token = user.create_and_return_token
+			token = user.create_and_return_token!
 			user = user.as_json
 			user[:authentication_token] = token
 
@@ -19,7 +19,8 @@ class Api::SessionsController < Api::BaseController
 	end
 
 	def destroy
-		# TODO - Setar token para nulo
+		User.expire_token(current_user, request) if current_user
+		render json: { status: 0, data: nil }
 	end
 
 end
