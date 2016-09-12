@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
 	validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-	def as_json(options)
-		super(except: [:password_digest, :created_at, :updated_at])
-	end
+	# def as_json(options)
+	# 	super(except: [:password_digest, :created_at, :updated_at])
+	# end
 
 end

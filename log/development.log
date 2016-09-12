@@ -4914,3 +4914,651 @@ Processing by Api::PostsController#my_posts as JSON
   [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
   [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 8]]
 Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2016-09-12 17:19:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 17:20:47 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"image"=>"image", "description"=>"lalala"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 58ms (ActiveRecord: 9.1ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 17:21:25 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"image"=>"image", "description"=>"lalala", "uid"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.7ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "authentication_tokens" SET "last_used_at" = $1, "updated_at" = $2 WHERE "authentication_tokens"."id" = $3  [["last_used_at", "2016-09-12 20:21:26.031162"], ["updated_at", "2016-09-12 20:21:26.033649"], ["id", 16]]
+  [1m[36m (142.7ms)[0m  [1mCOMMIT[0m
+Completed 400 Bad Request in 206ms (ActiveRecord: 158.1ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.7ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 17:21:51 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 2ms (ActiveRecord: 0.6ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 17:22:29 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[36mUser Load (5.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user4@example.com"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'efa22085c806ea46df1b355b0456324aee60972c' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (26.0ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "efa22085c806ea46df1b355b0456324aee60972c"], ["last_used_at", "2016-09-12 20:22:29.900577"], ["user_id", 8], ["created_at", "2016-09-12 20:22:29.925801"], ["updated_at", "2016-09-12 20:22:29.925801"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 166ms (ActiveRecord: 33.4ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:18:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.1ms)
+
+
+Started DELETE "/api/sessions" for ::1 at 2016-09-12 17:25:14 -0300
+
+ActionController::RoutingError (No route matches [DELETE] "/api/sessions"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.4ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.4ms)
+
+
+Started DELETE "/api/sessions?uid=8" for ::1 at 2016-09-12 17:26:02 -0300
+
+ActionController::RoutingError (No route matches [DELETE] "/api/sessions"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (62.9ms)
+
+
+Started DELETE "/api/sessions/8" for ::1 at 2016-09-12 17:26:09 -0300
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email"=>"user4@example.com", "id"=>"8"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 2ms (ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/sessions/8?uid=8" for ::1 at 2016-09-12 17:26:23 -0300
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"email"=>"user4@example.com", "uid"=>"8", "id"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+Completed   in 4ms (ActiveRecord: 1.0ms)
+
+
+Started DELETE "/api/sessions?uid=8" for ::1 at 2016-09-12 17:26:27 -0300
+
+ActionController::RoutingError (No route matches [DELETE] "/api/sessions"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (52.8ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 17:27:16 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 2ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-09-12 19:00:16 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 11ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 19:01:01 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user4@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.9ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'ddda7bee4223701db54ddd66d96ad4bc81e29111' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "ddda7bee4223701db54ddd66d96ad4bc81e29111"], ["last_used_at", "2016-09-12 22:01:01.842864"], ["user_id", 8], ["created_at", "2016-09-12 22:01:01.872101"], ["updated_at", "2016-09-12 22:01:01.872101"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 14.9ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:18:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.7ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.9ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 19:02:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user4@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (1.2ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '8394a0e1f179a07cd250398f9b4ba140a4ab78bd' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "8394a0e1f179a07cd250398f9b4ba140a4ab78bd"], ["last_used_at", "2016-09-12 22:02:28.981342"], ["user_id", 8], ["created_at", "2016-09-12 22:02:29.000820"], ["updated_at", "2016-09-12 22:02:29.000820"]]
+  [1m[35m (8.8ms)[0m  COMMIT
+Completed 200 OK in 179ms (Views: 0.8ms | ActiveRecord: 16.3ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 19:03:23 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 21ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:03:30 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}, "uid"=>"8"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+Unpermitted parameter: uid
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (14.2ms)[0m  [1mINSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "lalala"], ["image", "image"], ["created_at", "2016-09-12 22:03:30.928514"], ["updated_at", "2016-09-12 22:03:30.928514"]]
+  [1m[35m (5.3ms)[0m  COMMIT
+Completed 200 OK in 48ms (Views: 0.7ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/api/users/profile?uid=8" for ::1 at 2016-09-12 19:04:07 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"profile"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+Completed   in 3ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/profile?uid=8" for ::1 at 2016-09-12 19:04:30 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"profile"}
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/users/profile/8?uid=8" for ::1 at 2016-09-12 19:04:39 -0300
+
+ActionController::RoutingError (No route matches [GET] "/api/users/profile/8"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (83.7ms)
+
+
+Started GET "/api/users/profile" for ::1 at 2016-09-12 19:04:47 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"profile"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/8?uid=8" for ::1 at 2016-09-12 19:05:02 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/posts" for ::1 at 2016-09-12 19:08:14 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"descriptionTest", "image"=>"imagestring"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.3ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:08:32 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"descriptionTest", "image"=>"imagestring"}, "uid"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["description", "descriptionTest"], ["image", "imagestring"], ["created_at", "2016-09-12 22:08:32.163771"], ["updated_at", "2016-09-12 22:08:32.163771"]]
+  [1m[36m (9.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 19ms (Views: 0.7ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/api/users/uid?uid=8" for ::1 at 2016-09-12 19:10:02 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"uid"}
+  [1m[35mUser Load (3.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (1.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35m (10.2ms)[0m  BEGIN
+  [1m[36mSQL (31.1ms)[0m  [1mUPDATE "authentication_tokens" SET "last_used_at" = $1, "updated_at" = $2 WHERE "authentication_tokens"."id" = $3[0m  [["last_used_at", "2016-09-12 22:10:02.458210"], ["updated_at", "2016-09-12 22:10:02.477948"], ["id", 15]]
+  [1m[35m (11.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 169ms (Views: 2.1ms | ActiveRecord: 58.0ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:10:09 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (14.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 8]]
+Completed 200 OK in 32ms (Views: 4.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/api/users/uid?uid=8" for ::1 at 2016-09-12 19:13:03 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"uid"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.9ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 32ms (Views: 1.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:13:12 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 8]]
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:13:35 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}, "uid"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.7ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+Unpermitted parameter: uid
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (42.3ms)[0m  INSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["description", "lalala"], ["image", "image"], ["created_at", "2016-09-12 22:13:35.542194"], ["updated_at", "2016-09-12 22:13:35.542194"]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 73ms (Views: 4.4ms | ActiveRecord: 50.2ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:13:54 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"descriptionTest2", "image"=>"imagestring"}, "uid"=>"8"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "descriptionTest2"], ["image", "imagestring"], ["created_at", "2016-09-12 22:13:54.906519"], ["updated_at", "2016-09-12 22:13:54.906519"]]
+  [1m[35m (9.3ms)[0m  COMMIT
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 10.7ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:14:01 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}, "uid"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.5ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+Unpermitted parameter: uid
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["description", "lalala"], ["image", "image"], ["created_at", "2016-09-12 22:14:01.237211"], ["updated_at", "2016-09-12 22:14:01.237211"]]
+  [1m[36m (6.3ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 18ms (Views: 0.9ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:14:10 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"image", "description"=>"lalala", "uid"=>"8"}, "uid"=>"8"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+Unpermitted parameter: uid
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.2ms)[0m  [1mINSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "lalala"], ["image", "image"], ["created_at", "2016-09-12 22:14:10.969867"], ["updated_at", "2016-09-12 22:14:10.969867"]]
+  [1m[35m (6.3ms)[0m  COMMIT
+Completed 200 OK in 24ms (Views: 1.5ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:14:14 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (1.0ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (7.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 24ms (Views: 8.6ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/api/users/uid?uid=8" for ::1 at 2016-09-12 19:14:58 -0300
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"8", "id"=>"uid"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:15:24 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 8]]
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/my_posts" for ::1 at 2016-09-12 19:16:03 -0300
+Processing by Api::PostsController#my_posts as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/api/my_posts" for ::1 at 2016-09-12 19:16:22 -0300
+Processing by Api::PostsController#my_posts as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:16:31 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 8]]
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:17:05 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 19:19:02 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[35mUser Load (12.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user4@example.com"]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (16.2ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '09483705426d07fee6adbee44d38d80e69e7b1bf' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (4.5ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "09483705426d07fee6adbee44d38d80e69e7b1bf"], ["last_used_at", "2016-09-12 22:19:02.330214"], ["user_id", 8], ["created_at", "2016-09-12 22:19:02.354220"], ["updated_at", "2016-09-12 22:19:02.354220"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 165ms (Views: 1.2ms | ActiveRecord: 34.3ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:19:22 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:22:41 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (2.2ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:23:07 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.5ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 8]]
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/users" for ::1 at 2016-09-12 19:26:30 -0300
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"pet_name"=>"Kedim", "email"=>"user2@example.com", "password"=>"123456"}}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user2@example.com"], ["password_digest", "$2a$10$.a/op7dNodsAi2qKHaDjuuxE/cN7UHIpN9lLMsmWMRLAKoQkJGYaa"], ["pet_name", "Kedim"], ["created_at", "2016-09-12 22:26:31.119789"], ["updated_at", "2016-09-12 22:26:31.119789"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '1f1c2c03726f38bc7eec32ff834d1748017dbe08' AND "authentication_tokens"."user_id" = 9 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "1f1c2c03726f38bc7eec32ff834d1748017dbe08"], ["last_used_at", "2016-09-12 22:26:31.139974"], ["user_id", 9], ["created_at", "2016-09-12 22:26:31.144315"], ["updated_at", "2016-09-12 22:26:31.144315"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 161ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/my_posts?uid=8" for ::1 at 2016-09-12 19:41:51 -0300
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.6ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 8]]
+Completed 200 OK in 32ms (Views: 2.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:42:00 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"descriptionTest3", "image"=>"imagestring"}, "uid"=>"8"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.7ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "descriptionTest3"], ["image", "imagestring"], ["created_at", "2016-09-12 22:42:00.547882"], ["updated_at", "2016-09-12 22:42:00.547882"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Completed 200 OK in 29ms (Views: 4.6ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/" for ::1 at 2016-09-12 19:42:42 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/viniciuslemes/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 19:46:53 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user4@example.com"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'b4844e1f40f9d3ce3bf20ec6bcd48c5c86e20c39' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (9.6ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "b4844e1f40f9d3ce3bf20ec6bcd48c5c86e20c39"], ["last_used_at", "2016-09-12 22:46:53.265041"], ["user_id", 8], ["created_at", "2016-09-12 22:46:53.270516"], ["updated_at", "2016-09-12 22:46:53.270516"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 123ms (Views: 0.9ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:47:02 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 13ms (Views: 5.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-12 19:47:50 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user4@example.com", "password"=>"123456"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user4@example.com"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'b647d6359157ec79a4f3a73b86006752fe856dc7' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "b647d6359157ec79a4f3a73b86006752fe856dc7"], ["last_used_at", "2016-09-12 22:47:50.664996"], ["user_id", 8], ["created_at", "2016-09-12 22:47:50.671298"], ["updated_at", "2016-09-12 22:47:50.671298"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 105ms (Views: 0.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/posts?uid=8" for ::1 at 2016-09-12 19:48:05 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"8"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 11ms (Views: 3.8ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/users" for ::1 at 2016-09-12 19:49:28 -0300
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"user5@example.com", "pet_name"=>"Rebecah", "password"=>"123456"}}
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "user5@example.com"], ["password_digest", "$2a$10$Fnejoa2H6lps1yC7b1U11uGst9CR.1yV2xWtfy5YVAMHdRAXOF4Hm"], ["pet_name", "Rebecah"], ["created_at", "2016-09-12 22:49:28.399481"], ["updated_at", "2016-09-12 22:49:28.399481"]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '5b06db9cc2a5af84cba1350b4550f9c0c72f4729' AND "authentication_tokens"."user_id" = 10 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "5b06db9cc2a5af84cba1350b4550f9c0c72f4729"], ["last_used_at", "2016-09-12 22:49:28.419218"], ["user_id", 10], ["created_at", "2016-09-12 22:49:28.423612"], ["updated_at", "2016-09-12 22:49:28.423612"]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 136ms (Views: 0.9ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/api/posts?uid=10" for ::1 at 2016-09-12 19:50:25 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"10"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mAuthenticationToken Load (1.0ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 10]]
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 54ms (Views: 15.7ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api/posts?uid=8" for ::1 at 2016-09-12 19:51:26 -0300
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"descriptionTest4", "image"=>"imagestring"}, "uid"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 8]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["description", "descriptionTest4"], ["image", "imagestring"], ["created_at", "2016-09-12 22:51:26.558845"], ["updated_at", "2016-09-12 22:51:26.558845"]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 0.4ms | ActiveRecord: 8.1ms)
