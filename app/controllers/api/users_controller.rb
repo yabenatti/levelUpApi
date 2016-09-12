@@ -1,5 +1,7 @@
 	class Api::UsersController < Api::BaseController
-	before_action :get_user, except: [ :create, :my_posts ]
+	before_action :get_user, except: [ :create, :my_posts]
+	skip_before_filter :authenticate!, only: [:create]
+
 
 	# /api/users/:id
 	def show
@@ -11,9 +13,13 @@
 		user = User.new(user_params)
 
 		if user.save
+			token = user.create_and_return_token!
+			user = user.as_json
+			user[:authentication_token] = token
+
 			render json: { status: 0, data: user }
 		else
-			render json: { status: 2, messages: user.errros.first.full_message }
+			render json: { status: 2, messages: @user.errors.first.full_message }
 		end
 	end
 
@@ -34,7 +40,7 @@
 
 	#to create
 	def user_params
-		params.require(:user).permit(:name, :email, :birth_date, :pet_name, :password)
+		params.require(:user).permit(:email, :password, :pet_name)
 	end
 
 	#allowed to update

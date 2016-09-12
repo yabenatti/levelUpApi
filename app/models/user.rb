@@ -10,7 +10,6 @@ class User < ApplicationRecord
 	has_many :authentication_tokens
 
 	validates_presence_of :email
-	validates_presence_of :name
 
 	has_secure_password
 

@@ -1,4 +1,4 @@
-class CreateAuthenticationToken < ActiveRecord::Migration[5.0]
+class CreateAuthenticationToken < ActiveRecord::Migration
   def change
     create_table :authentication_tokens do |t|
       t.references :user, null: false, index: true, foreign_key: true

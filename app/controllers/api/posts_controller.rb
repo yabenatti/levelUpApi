@@ -1,10 +1,10 @@
 class Api::PostsController < Api::BaseController
-	before_action :get_post, except: [ :create]
+	before_action :get_post, except: [ :create, :index, :my_posts]
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 	# /api/posts/:id			
 	def show
-		render json: { status: 0, data: @post }
+		render json: { status: 0, data: post }
 	end
 
 	# POST - /api/posts
@@ -29,6 +29,11 @@ class Api::PostsController < Api::BaseController
 
 	# DELETE - /api/posts/:id
 	def destroy
+	end
+
+	def index
+  		posts = Post.all
+  		render json: { status: 0, data: posts }
 	end
 
 	def my_posts
