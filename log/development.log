@@ -2704,3 +2704,65 @@ Processing by Api::SessionsController#destroy as JSON
   [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 1]]
   [1m[35m (0.5ms)[0m  COMMIT
 Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/" for ::1 at 2016-09-27 16:58:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (68.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 49ms (Views: 48.3ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (63.8ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-27 17:10:09 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"y@gmail.com", "password"=>"123456"}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+Completed 500 Internal Server Error in 29ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-27 17:10:16 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"y@gmail.com", "password"=>"12345678"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-27 17:10:21 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"12345678"}
+  [1m[35mUser Load (12.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+Completed 500 Internal Server Error in 144ms (Views: 0.3ms | ActiveRecord: 15.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-27 17:10:25 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "y@gmail.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (74.1ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '0f63433a2edadf06200693d6fb5c502f9155d9d1' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (111.1ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "0f63433a2edadf06200693d6fb5c502f9155d9d1"], ["last_used_at", "2016-09-27 20:10:25.304090"], ["user_id", 1], ["created_at", "2016-09-27 20:10:25.431790"], ["updated_at", "2016-09-27 20:10:25.431790"]]
+  [1m[36m (7.1ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 360ms (ActiveRecord: 194.2ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:19:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (23.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.2ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-09-27 17:11:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '88944d98ba1061631b3eae0c2878574f0a43544f' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "88944d98ba1061631b3eae0c2878574f0a43544f"], ["last_used_at", "2016-09-27 20:11:19.659835"], ["user_id", 1], ["created_at", "2016-09-27 20:11:19.673818"], ["updated_at", "2016-09-27 20:11:19.673818"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 120ms (Views: 0.4ms | ActiveRecord: 6.5ms)

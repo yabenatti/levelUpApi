@@ -9,7 +9,7 @@ class Api::PostsController < Api::BaseController
 
 	# POST - /api/posts
 	def create
-		post = Post.new(post_params)
+		post = current_user.posts.build(post_params)
 
 		if post.save
 			render json: { status: 0, data: post }
