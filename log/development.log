@@ -5622,3 +5622,1199 @@ Processing by Api::PostsController#create as JSON
   [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["description", "descriptionTest4"], ["image", "imagestring"], ["created_at", "2016-09-12 22:51:26.558845"], ["updated_at", "2016-09-12 22:51:26.558845"]]
   [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
 Completed 200 OK in 22ms (Views: 0.4ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/" for ::1 at 2016-10-01 14:51:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (65.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 49ms (Views: 49.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 14:52:53 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (135.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (85.5ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'fbc2e52773ddc88c39fde2523d3436aacdbec537' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (103.9ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "fbc2e52773ddc88c39fde2523d3436aacdbec537"], ["last_used_at", "2016-10-01 17:52:53.775681"], ["user_id", 1], ["created_at", "2016-10-01 17:52:53.914069"], ["updated_at", "2016-10-01 17:52:53.914069"]]
+  [1m[35m (11.2ms)[0m  COMMIT
+Completed 200 OK in 884ms (Views: 6.7ms | ActiveRecord: 591.2ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 15:00:12 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "y@gmail.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '072dffbeabe1934bea488c08fc0e11525348a399' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "072dffbeabe1934bea488c08fc0e11525348a399"], ["last_used_at", "2016-10-01 18:00:12.982548"], ["user_id", 1], ["created_at", "2016-10-01 18:00:12.984640"], ["updated_at", "2016-10-01 18:00:12.984640"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 75ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2016-10-01 15:00:46 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 35ms (Views: 34.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 15:01:00 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'ef4c3567abe5dc331d384f8d02c031ca5dee9c84' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "ef4c3567abe5dc331d384f8d02c031ca5dee9c84"], ["last_used_at", "2016-10-01 18:01:01.234145"], ["user_id", 1], ["created_at", "2016-10-01 18:01:01.283344"], ["updated_at", "2016-10-01 18:01:01.283344"]]
+  [1m[35m (40.9ms)[0m  COMMIT
+Completed 200 OK in 311ms (Views: 0.4ms | ActiveRecord: 48.3ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 15:03:09 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "y@gmail.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'e5ca98df999856ab55a1d4e7864c5a741d20e066' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "e5ca98df999856ab55a1d4e7864c5a741d20e066"], ["last_used_at", "2016-10-01 18:03:09.966854"], ["user_id", 1], ["created_at", "2016-10-01 18:03:09.969241"], ["updated_at", "2016-10-01 18:03:09.969241"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 77ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 15:03:16 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'b3b192cbea8af2780150cf0ee2316c2698e38873' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "b3b192cbea8af2780150cf0ee2316c2698e38873"], ["last_used_at", "2016-10-01 18:03:16.100608"], ["user_id", 1], ["created_at", "2016-10-01 18:03:16.102944"], ["updated_at", "2016-10-01 18:03:16.102944"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 79ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/sessions" for ::1 at 2016-10-01 15:40:19 -0300
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"password"=>"123456", "email"=>"y@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "y@gmail.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '2514cad19de90b02b9fd625615e2a00b8c52ad5d' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "2514cad19de90b02b9fd625615e2a00b8c52ad5d"], ["last_used_at", "2016-10-01 18:40:19.938085"], ["user_id", 1], ["created_at", "2016-10-01 18:40:19.940345"], ["updated_at", "2016-10-01 18:40:19.940345"]]
+  [1m[36m (246.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 322ms (Views: 0.4ms | ActiveRecord: 248.0ms)
+
+
+Started GET "/api/posts?uid=1" for ::1 at 2016-10-01 15:40:26 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (626.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 1120ms (Views: 5.0ms | ActiveRecord: 628.1ms)
+
+
+Started GET "/api/posts?uid=1" for ::1 at 2016-10-01 15:44:26 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.7ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (1.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 10ms (Views: 2.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/posts?uid=1" for ::1 at 2016-10-01 15:45:20 -0300
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/sessions" for 192.168.0.114 at 2016-10-01 15:53:29 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'd543482608ad27896ae746146007f6cc301584aa' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (23.0ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "d543482608ad27896ae746146007f6cc301584aa"], ["last_used_at", "2016-10-01 18:53:30.855644"], ["user_id", 1], ["created_at", "2016-10-01 18:53:30.898830"], ["updated_at", "2016-10-01 18:53:30.898830"]]
+  [1m[35m (13.5ms)[0m  COMMIT
+Completed 200 OK in 278ms (Views: 0.4ms | ActiveRecord: 41.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 15:53:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 39ms (Views: 4.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 15:59:13 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/posts?uid=(null)" for 192.168.0.114 at 2016-10-01 15:59:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"(null)"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 217ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:02:33 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.140 at 2016-10-01 16:03:00 -0300
+Cannot render console from 192.168.0.140! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.5ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:03:25 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (51.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "I was created because the beacon told me so"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:03:25.719534"], ["updated_at", "2016-10-01 19:03:25.719534"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 97ms (Views: 0.3ms | ActiveRecord: 52.6ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:03:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:04:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:04:36 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (152.1ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "I was created because the beacon told me so"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:04:36.928167"], ["updated_at", "2016-10-01 19:04:36.928167"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 159ms (Views: 0.4ms | ActiveRecord: 153.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:04:39 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/posts?uid=(null)" for 192.168.0.114 at 2016-10-01 16:05:49 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"(null)"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.2ms)
+
+
+Started POST "/api/sessions" for 192.168.0.114 at 2016-10-01 16:05:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'a600e3152f15751f3ae7a490f4960dd202b9452d' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "a600e3152f15751f3ae7a490f4960dd202b9452d"], ["last_used_at", "2016-10-01 19:05:58.402943"], ["user_id", 1], ["created_at", "2016-10-01 19:05:58.404986"], ["updated_at", "2016-10-01 19:05:58.404986"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Completed 200 OK in 75ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:06:03 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:10:11 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:10:11 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "I was created because the beacon told me so"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:10:11.593488"], ["updated_at", "2016-10-01 19:10:11.593488"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:10:55 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:20:49 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:20:49 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "I was created because the beacon told me so"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:20:49.641901"], ["updated_at", "2016-10-01 19:20:49.641901"]]
+  [1m[35m (40.6ms)[0m  COMMIT
+Completed 200 OK in 46ms (Views: 0.4ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:20:54 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=(null)" for 192.168.0.114 at 2016-10-01 16:21:29 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"(null)"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.2ms)
+
+
+Started POST "/api/sessions" for 192.168.0.114 at 2016-10-01 16:21:34 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "y@gmail.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '12ea373bb3c1a36667eefc67d1fe59942937c3e6' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "12ea373bb3c1a36667eefc67d1fe59942937c3e6"], ["last_used_at", "2016-10-01 19:21:34.464303"], ["user_id", 1], ["created_at", "2016-10-01 19:21:34.466402"], ["updated_at", "2016-10-01 19:21:34.466402"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 73ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/posts?uid=Yasmina" for 192.168.0.114 at 2016-10-01 16:21:34 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"Yasmina"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.3ms)
+
+
+Started POST "/api/posts?uid=(null)" for 192.168.0.114 at 2016-10-01 16:22:50 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"(null)"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed   in 1ms (ActiveRecord: 0.2ms)
+
+
+Started POST "/api/sessions" for 192.168.0.114 at 2016-10-01 16:23:25 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.8ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '6ddfdd0120b5e4df9f3719af31e6c6fc860f37b5' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "6ddfdd0120b5e4df9f3719af31e6c6fc860f37b5"], ["last_used_at", "2016-10-01 19:23:25.678603"], ["user_id", 1], ["created_at", "2016-10-01 19:23:25.681278"], ["updated_at", "2016-10-01 19:23:25.681278"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:23:25 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:23:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I was created because the beacon told me so"}, "uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "I was created because the beacon told me so"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:23:35.144874"], ["updated_at", "2016-10-01 19:23:35.144874"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:23:36 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:32 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:34 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (39.6ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:38 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.3ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:38 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:38 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.7ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (42.6ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:44 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.7ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.2ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:45 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.3ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:45 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.6ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.2ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:48 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.9ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:48 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (57.1ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:52 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.1ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:53 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.1ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.1ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.4ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:30:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.5ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.6ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:02 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:02 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.9ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.4ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:02 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.3ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:12 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:12 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.6ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.3ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:17 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.7ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:31:34 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:32:06 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:32:08 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.4ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: post):
+  app/controllers/api/posts_controller.rb:46:in `post_params'
+  app/controllers/api/posts_controller.rb:12:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:33:20 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:33:29 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:34:03 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/sessions" for 192.168.0.114 at 2016-10-01 16:34:57 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '5498e52b4621c1002b555966cfd78efd4d77391c' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "5498e52b4621c1002b555966cfd78efd4d77391c"], ["last_used_at", "2016-10-01 19:34:58.126355"], ["user_id", 1], ["created_at", "2016-10-01 19:34:58.128468"], ["updated_at", "2016-10-01 19:34:58.128468"]]
+  [1m[35m (173.5ms)[0m  COMMIT
+Completed 200 OK in 247ms (Views: 0.3ms | ActiveRecord: 174.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:34:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:35:16 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:35:16.170544"], ["updated_at", "2016-10-01 19:35:16.170544"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:35:16 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:37:29 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:37:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I'm the food beacon YUM"}, "uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "I'm the food beacon YUM"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:37:58.426086"], ["updated_at", "2016-10-01 19:37:58.426086"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:37:58 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:38:04 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:39:51 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:02 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"LET ME OUT!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "LET ME OUT!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:02.793345"], ["updated_at", "2016-10-01 19:40:02.793345"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:02 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:05 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"LET ME OUT!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "LET ME OUT!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:05.867113"], ["updated_at", "2016-10-01 19:40:05.867113"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:05 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:15 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:15.395858"], ["updated_at", "2016-10-01 19:40:15.395858"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:15 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:26 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"I'm the food beacon YUM"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "I'm the food beacon YUM"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:26.774527"], ["updated_at", "2016-10-01 19:40:26.774527"]]
+  [1m[36m (59.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 65ms (Views: 0.4ms | ActiveRecord: 60.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:27 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:35.665179"], ["updated_at", "2016-10-01 19:40:35.665179"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:35 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:37 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:37.819211"], ["updated_at", "2016-10-01 19:40:37.819211"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:37 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:39 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:39.671674"], ["updated_at", "2016-10-01 19:40:39.671674"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:39 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:42 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:42.119584"], ["updated_at", "2016-10-01 19:40:42.119584"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:42 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:43 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:43.346352"], ["updated_at", "2016-10-01 19:40:43.346352"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:43 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:47 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"", "description"=>"Sleepests Warriors, to the pillow zone!"}, "uid"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Sleepests Warriors, to the pillow zone!"], ["image", ""], ["user_id", 1], ["created_at", "2016-10-01 19:40:47.954111"], ["updated_at", "2016-10-01 19:40:47.954111"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.114 at 2016-10-01 16:40:48 -0300
+Cannot render console from 192.168.0.114! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-01 16:59:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"y@gmail.com", "password"=>"123456"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "y@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '17c4563b236da637123592c8d18492fdda4fb916' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "17c4563b236da637123592c8d18492fdda4fb916"], ["last_used_at", "2016-10-01 19:59:54.614907"], ["user_id", 1], ["created_at", "2016-10-01 19:59:54.658213"], ["updated_at", "2016-10-01 19:59:54.658213"]]
+  [1m[35m (40.9ms)[0m  COMMIT
+Completed 200 OK in 268ms (Views: 0.4ms | ActiveRecord: 46.7ms)
+
+
+Started GET "/api/posts?uid=1" for 192.168.0.140 at 2016-10-01 16:59:57 -0300
+Cannot render console from 192.168.0.140! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (47.7ms)[0m  UPDATE "authentication_tokens" SET "last_used_at" = $1, "updated_at" = $2 WHERE "authentication_tokens"."id" = $3  [["last_used_at", "2016-10-01 19:59:57.685508"], ["updated_at", "2016-10-01 19:59:57.686255"], ["id", 10]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 118ms (Views: 7.6ms | ActiveRecord: 50.7ms)
