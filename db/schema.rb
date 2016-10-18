@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160826202000) do
+ActiveRecord::Schema.define(version: 20161017115058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "authentication_tokens", force: :cascade do |t|
     t.integer  "user_id",              null: false
@@ -28,12 +34,24 @@ ActiveRecord::Schema.define(version: 20160826202000) do
   add_index "authentication_tokens", ["user_id", "authentication_token"], name: "index_authentication_tokens_on_user_id_and_authentication_token", unique: true, using: :btree
   add_index "authentication_tokens", ["user_id"], name: "index_authentication_tokens_on_user_id", using: :btree
 
+  create_table "beacons", force: :cascade do |t|
+    t.string   "unique_id",  null: false
+    t.string   "minor"
+    t.string   "major"
+    t.string   "pet_image"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "description"
@@ -41,9 +59,11 @@ ActiveRecord::Schema.define(version: 20160826202000) do
     t.datetime "date"
     t.integer  "likes"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -52,9 +72,11 @@ ActiveRecord::Schema.define(version: 20160826202000) do
     t.string   "pet_name"
     t.integer  "beacon_id"
     t.datetime "birth_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["beacon_id"], name: "index_users_on_beacon_id", using: :btree
 
   add_foreign_key "authentication_tokens", "users"
 end

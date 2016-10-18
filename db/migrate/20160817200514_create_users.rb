@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :email, null: false
       t.string :password_digest
     	t.string :pet_name
-    	t.references :beacon
     	t.datetime :birth_date
 
       t.timestamps

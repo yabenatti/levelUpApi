@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   	
   	resources :comments
 
+  	resources :beacons
+    get "my_beacons" => "beacons#my_beacons"
+
+
   	resources :sessions, except: [:update, :show]
   end
 

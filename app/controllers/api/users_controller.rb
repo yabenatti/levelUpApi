@@ -1,5 +1,5 @@
 	class Api::UsersController < Api::BaseController
-	before_action :get_user, except: [ :create, :my_posts]
+	before_action :get_user, except: [ :create, :my_posts, :my_beacons]
 	skip_before_filter :authenticate!, only: [:create]
 
 
