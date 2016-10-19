@@ -9938,3 +9938,1500 @@ Processing by Api::PostsController#index as JSON
   [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
   [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
 Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:15:05 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:15:31 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:15:37 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:17:51 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:17:53 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"http://data3.whicdn.com/images/148217235/large.jpg", "description"=>"I'm the food beacon YUM"}, "uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "I'm the food beacon YUM"], ["image", "http://data3.whicdn.com/images/148217235/large.jpg"], ["user_id", 4], ["created_at", "2016-10-18 20:17:53.517210"], ["updated_at", "2016-10-18 20:17:53.517210"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:17:53 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:18:01 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:18:01 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:21:54 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:21:56 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:21:56 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:22:54 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:22:56 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:22:56 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.140 at 2016-10-18 18:23:29 -0200
+Cannot render console from 192.168.0.140! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+Completed   in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.140 at 2016-10-18 18:23:39 -0200
+Cannot render console from 192.168.0.140! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:23:59 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:24:01 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"image"=>"http://data3.whicdn.com/images/148217235/large.jpg", "description"=>"I'm the food beacon YUM"}, "uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "I'm the food beacon YUM"], ["image", "http://data3.whicdn.com/images/148217235/large.jpg"], ["user_id", 4], ["created_at", "2016-10-18 20:24:01.484275"], ["updated_at", "2016-10-18 20:24:01.484275"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:24:01 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:24:04 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:24:04 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:24:59 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:25:04 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:25:04 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:35:44 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:35:52 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:35:52 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:44:30 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:44:32 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:44:32 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:45:05 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:46:58 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:47:03 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:47:03 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:47:45 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:47:46 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:47:46 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:48:15 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:48:15 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:49:33 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:50:11 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:50:11 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:51:38 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:51:40 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:51:40 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:52:19 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:52:41 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:52:41 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:55:00 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:55:07 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:55:07 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:57:34 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:57:35 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:57:35 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:58:47 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:58:51 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:58:51 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 18:59:28 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 18:59:32 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 18:59:32 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 19:04:52 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/uid?uid=4" for 192.168.0.227 at 2016-10-18 19:04:53 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"4", "id"=>"uid"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Filter chain halted as :get_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/my_posts?uid=4" for 192.168.0.227 at 2016-10-18 19:04:54 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/api/sessions/4?uid=4&id=4" for 192.168.0.227 at 2016-10-18 19:04:59 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"uid"=>"4", "id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 41]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/posts?uid=4" for 192.168.0.227 at 2016-10-18 19:05:01 -0200
+Cannot render console from 192.168.0.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+Completed   in 2ms (ActiveRecord: 0.4ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 17:48:29 -0200
+
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.7ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 17:52:19 -0200
+
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.2ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-19 17:52:34 -0200
+
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-19 17:53:01 -0200
+
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.0ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 17:54:45 -0200
+
+PG::ConnectionBad (could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+):
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /Users/ringasd2/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/monitor.rb:214:in `mon_synchronize'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.7.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-19 18:03:36 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (98.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 34ms (Views: 33.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-19 18:04:27 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user7@example.com", "password"=>"123456"}
+  [1m[35mUser Load (297.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user7@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (85.3ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'b0821c125e841a6dfff5ee46f7f7613a1863c87d' AND "authentication_tokens"."user_id" = 4 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (226.1ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "b0821c125e841a6dfff5ee46f7f7613a1863c87d"], ["last_used_at", "2016-10-19 20:04:28.273630"], ["user_id", 4], ["created_at", "2016-10-19 20:04:28.412222"], ["updated_at", "2016-10-19 20:04:28.412222"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 1417ms (Views: 0.4ms | ActiveRecord: 1116.8ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:04:39 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "minor"=>"37813", "major"=>"47798", "uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "authentication_tokens" SET "last_used_at" = $1, "updated_at" = $2 WHERE "authentication_tokens"."id" = $3  [["last_used_at", "2016-10-19 20:04:40.016032"], ["updated_at", "2016-10-19 20:04:40.016659"], ["id", 40]]
+  [1m[36m (40.6ms)[0m  [1mCOMMIT[0m
+Completed 400 Bad Request in 73ms (ActiveRecord: 41.6ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: beacon):
+  app/controllers/api/beacons_controller.rb:37:in `beacon_params'
+  app/controllers/api/beacons_controller.rb:11:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (48.9ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:06:43 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "minor"=>"37813", "major"=>"47798"}, "uid"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mBeacon Load (14.7ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3  [["user_id", nil], ["updated_at", "2016-10-19 20:06:43.676699"], ["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 4], ["created_at", "2016-10-19 20:06:43.679907"], ["updated_at", "2016-10-19 20:06:43.679907"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Completed 200 OK in 116ms (Views: 0.4ms | ActiveRecord: 35.4ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:06:47 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "minor"=>"37813", "major"=>"47798"}, "uid"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mBeacon Load (0.5ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 4]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3[0m  [["user_id", nil], ["updated_at", "2016-10-19 20:06:47.942236"], ["id", 5]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 4], ["created_at", "2016-10-19 20:06:47.948666"], ["updated_at", "2016-10-19 20:06:47.948666"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 18ms (Views: 0.5ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/my_beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:08:11 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/my_beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:08:11 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 4]]
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:08:11 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"37813", "minor"=>"47798"}, "uid"=>"4"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+Completed   in 5ms (ActiveRecord: 1.5ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:08:40 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"37813", "minor"=>"47798"}, "uid"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3  [["user_id", nil], ["updated_at", "2016-10-19 20:08:40.024216"], ["id", 6]]
+  [1m[36m (40.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "47798"], ["major", "37813"], ["user_id", 4], ["created_at", "2016-10-19 20:08:40.068036"], ["updated_at", "2016-10-19 20:08:40.068036"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 52ms (Views: 0.4ms | ActiveRecord: 43.2ms)
+
+
+Started POST "/api/beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:09:12 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"37813", "minor"=>"47798", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007f7ff50f2e78 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-622-52dib8.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3[0m  [["user_id", nil], ["updated_at", "2016-10-19 20:09:12.064273"], ["id", 7]]
+  [1m[35m (40.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "beacons" ("unique_id", "minor", "major", "pet_image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "47798"], ["major", "37813"], ["pet_image", "80ec6c3d-8492-4d4f-b626-c25b98b3db15.png"], ["user_id", 4], ["created_at", "2016-10-19 20:09:12.107477"], ["updated_at", "2016-10-19 20:09:12.107477"]]
+  [1m[36m (40.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 97ms (Views: 0.5ms | ActiveRecord: 82.5ms)
+
+
+Started GET "/api/my_beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:10:55 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mBeacon Load (0.6ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 4]]
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/my_beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:10:58 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.8ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 4]]
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/users" for 192.168.0.75 at 2016-10-19 18:34:21 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"user11@example.com", "pet_name"=>"Lola", "password"=>"123456"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (16.7ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user11@example.com"], ["password_digest", "$2a$10$16MIBTB93rnahuiPBzwnNeRkhUTHB6V0MTuIVledo46jyXbpGpdrO"], ["pet_name", "Lola"], ["created_at", "2016-10-19 20:34:21.482086"], ["updated_at", "2016-10-19 20:34:21.482086"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '34a1de7549451d3db6d94eb5578afbdf03401b31' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "34a1de7549451d3db6d94eb5578afbdf03401b31"], ["last_used_at", "2016-10-19 20:34:21.501096"], ["user_id", 5], ["created_at", "2016-10-19 20:34:21.503123"], ["updated_at", "2016-10-19 20:34:21.503123"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 91ms (Views: 0.3ms | ActiveRecord: 18.8ms)
+
+
+Started POST "/api/users" for 192.168.0.75 at 2016-10-19 18:37:21 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"user12@example.com", "pet_name"=>"Lola", "password"=>"123456"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "user12@example.com"], ["password_digest", "$2a$10$ipuvm8rFG/6gMjJoq4oZJONt3g4mX0CQ68.k9c2yzHFYh2WHVxJKC"], ["pet_name", "Lola"], ["created_at", "2016-10-19 20:37:21.684484"], ["updated_at", "2016-10-19 20:37:21.684484"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '2e2f61ba5145dc8494f213ebc2e0a2625799a040' AND "authentication_tokens"."user_id" = 6 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "2e2f61ba5145dc8494f213ebc2e0a2625799a040"], ["last_used_at", "2016-10-19 20:37:21.687455"], ["user_id", 6], ["created_at", "2016-10-19 20:37:21.689348"], ["updated_at", "2016-10-19 20:37:21.689348"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 75ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/beacons?uid=6" for 192.168.0.75 at 2016-10-19 18:38:04 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"major"=>"47798", "minor"=>"37813", "unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D"}, "user"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x007f7ff1a2a940 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-622-pbs06h.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 6], ["created_at", "2016-10-19 20:38:04.516979"], ["updated_at", "2016-10-19 20:38:04.516979"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-19 18:38:20 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user12@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user12@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '7f5cbfc422cea7d45cf05a9a297a7401a7dc376b' AND "authentication_tokens"."user_id" = 6 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "7f5cbfc422cea7d45cf05a9a297a7401a7dc376b"], ["last_used_at", "2016-10-19 20:38:20.563947"], ["user_id", 6], ["created_at", "2016-10-19 20:38:20.566284"], ["updated_at", "2016-10-19 20:38:20.566284"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 74ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/my_beacons?uid=4" for 127.0.0.1 at 2016-10-19 18:38:32 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthenticationToken Load (0.9ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mBeacon Load (0.7ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 4]]
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/my_beacons?uid=6" for 127.0.0.1 at 2016-10-19 18:38:56 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 6]]
+Completed   in 3ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_beacons?uid=6" for 127.0.0.1 at 2016-10-19 18:39:08 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mAuthenticationToken Load (0.8ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/beacons?uid=6" for 192.168.0.75 at 2016-10-19 18:40:39 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"major"=>"47798", "minor"=>"37813", "unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D"}, "user"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x007f7ff23298c0 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-622-12756i8.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3[0m  [["user_id", nil], ["updated_at", "2016-10-19 20:40:39.422749"], ["id", 9]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 6], ["created_at", "2016-10-19 20:40:39.425245"], ["updated_at", "2016-10-19 20:40:39.425245"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/api/my_beacons?uid=6" for 127.0.0.1 at 2016-10-19 18:41:18 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"6"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-19 18:42:08 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user12@example.com", "password"=>"123456"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user12@example.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '719b78c5716cb3727d2f027e7cb61c46873dfd51' AND "authentication_tokens"."user_id" = 6 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "719b78c5716cb3727d2f027e7cb61c46873dfd51"], ["last_used_at", "2016-10-19 20:42:08.157275"], ["user_id", 6], ["created_at", "2016-10-19 20:42:08.159644"], ["updated_at", "2016-10-19 20:42:08.159644"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/api/beacons?uid=6" for 192.168.0.75 at 2016-10-19 18:42:48 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"major"=>"47798", "minor"=>"37813", "unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D"}, "user"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x007fd8441218c0 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-1228-1m251mh.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"6"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3  [["user_id", nil], ["updated_at", "2016-10-19 20:42:48.990874"], ["id", 10]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 6], ["created_at", "2016-10-19 20:42:48.994752"], ["updated_at", "2016-10-19 20:42:48.994752"]]
+  [1m[35m (4.5ms)[0m  COMMIT
+Completed 200 OK in 77ms (Views: 0.6ms | ActiveRecord: 12.7ms)
+
+
+Started POST "/api/beacons?uid=6" for 192.168.0.75 at 2016-10-19 18:47:05 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"major"=>"47798", "minor"=>"37813", "unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D"}, "user"=>{"picture"=>#<ActionDispatch::Http::UploadedFile:0x007fd8407471e0 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-1228-1w23uvi.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 6]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "beacons" SET "user_id" = $1, "updated_at" = $2 WHERE "beacons"."id" = $3[0m  [["user_id", nil], ["updated_at", "2016-10-19 20:47:05.193546"], ["id", 11]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["user_id", 6], ["created_at", "2016-10-19 20:47:05.196226"], ["updated_at", "2016-10-19 20:47:05.196226"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/users" for 192.168.0.75 at 2016-10-19 18:48:02 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"user13@example.com", "pet_name"=>"Lola", "password"=>"123456"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "user13@example.com"], ["password_digest", "$2a$10$4iEemuWajWtZO.S3X68Lreat5HnU3A1be3ADSp4QFJv1DtpfiVYKi"], ["pet_name", "Lola"], ["created_at", "2016-10-19 20:48:02.832329"], ["updated_at", "2016-10-19 20:48:02.832329"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '08c12f606d47e4a3f818828c549703948574f6a7' AND "authentication_tokens"."user_id" = 7 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "08c12f606d47e4a3f818828c549703948574f6a7"], ["last_used_at", "2016-10-19 20:48:02.835058"], ["user_id", 7], ["created_at", "2016-10-19 20:48:02.841662"], ["updated_at", "2016-10-19 20:48:02.841662"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 80ms (Views: 0.3ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/beacons?uid=7" for 192.168.0.75 at 2016-10-19 18:48:17 -0200
+Cannot render console from 192.168.0.75! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"major"=>"47798", "minor"=>"37813", "unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fd83ff753e0 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161019-1228-nn3yl3.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "beacons" ("unique_id", "minor", "major", "pet_image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "37813"], ["major", "47798"], ["pet_image", "2afbe009-7aa4-44f6-9057-c9ea6f7c20fc.jpg"], ["user_id", 7], ["created_at", "2016-10-19 20:48:17.898624"], ["updated_at", "2016-10-19 20:48:17.898624"]]
+  [1m[35m (40.5ms)[0m  COMMIT
+Completed 200 OK in 51ms (Views: 0.4ms | ActiveRecord: 41.9ms)
+
+
+Started GET "/api/my_beacons?uid=6" for 127.0.0.1 at 2016-10-19 18:48:36 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 6]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-19 18:48:47 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user13@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user13@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.4ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '3991b6248eb9cd5ce8757c26b6ac8bf2b1042750' AND "authentication_tokens"."user_id" = 7 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "3991b6248eb9cd5ce8757c26b6ac8bf2b1042750"], ["last_used_at", "2016-10-19 20:48:47.923559"], ["user_id", 7], ["created_at", "2016-10-19 20:48:47.925966"], ["updated_at", "2016-10-19 20:48:47.925966"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 77ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/my_beacons?uid=7" for 127.0.0.1 at 2016-10-19 18:48:52 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+Completed   in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_beacons?uid=7" for 127.0.0.1 at 2016-10-19 18:49:00 -0200
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mBeacon Load (0.5ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 1.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "beacons" WHERE "beacons"."id" = $1  [["id", 3]]
+  [1m[36mPost Load (22.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 33]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 34]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 35]]
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "beacons" WHERE "beacons"."id" = $1[0m  [["id", 3]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 33]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 34]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 35]]
+  [1m[35mComment Load (292.0ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1  [["user_id", 1]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 2]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 3]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 4]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 5]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 6]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 7]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 8]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 9]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 11]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 12]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 13]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 14]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 15]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 10]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 16]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 17]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 18]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 19]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 20]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 21]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 27]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 28]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 29]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 30]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 31]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 32]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 33]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 34]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 35]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 36]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 37]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 22]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 38]]
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.5ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1  [["user_id", 2]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 23]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 3]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1  [["user_id", 3]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 24]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 4]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "beacons" WHERE "beacons"."id" = $1[0m  [["id", 8]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 4]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 36]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 37]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 38]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 39]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 4]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 25]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 39]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 42]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 40]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1  [["user_id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 43]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "beacons" WHERE "beacons"."id" = $1[0m  [["id", 12]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 6]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35mAuthenticationToken Load (0.6ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 6]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 44]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 45]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 46]]
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 6]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "beacons" WHERE "beacons"."id" = $1  [["id", 13]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1  [["user_id", 7]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1  [["id", 47]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 48]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 7]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m

@@ -4,10 +4,10 @@ class User < ApplicationRecord
 	include BCrypt
 	include TokenHelper
 
-	has_one :beacon
-	has_many :posts
-	has_many :comments
-	has_many :authentication_tokens
+	has_one :beacon, dependent: :destroy
+	has_many :posts, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	has_many :authentication_tokens, dependent: :destroy
 
 	validates_presence_of :email
 
