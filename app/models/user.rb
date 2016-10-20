@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 	has_one :beacon, dependent: :destroy
 	has_many :posts, dependent: :destroy
-	has_many :comments, dependent: :destroy
+	# has_many :comments, dependent: :destroy
 	has_many :authentication_tokens, dependent: :destroy
 
 	validates_presence_of :email

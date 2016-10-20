@@ -1,33 +1,31 @@
 class Api::CommentsController < Api::BaseController
-	before_action :get_comment, except: [ :create]
+	before_action :get_comment, except: [ :create, :index]
+	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 	# /api/comments/:id			
 	def show
-		render json: {status : 0, data @comment}
+		render json: {status: 0, data: comment}
 	end
 
 	# comment - /api/comments
 	def create
-		comment = Comment.new(comment_params)
+    	post = Post.find(params[:post_id])
+        comment = post.comments.build(:user_id => current_user.id, :description => params[:comment][:description])
 
 		if comment.save
 			render json: { status: 0, data: comment }
 		else
-			render json: { status: 2, messages: comment.errros.first.full_message }
-		end
-	end
-
-	# PATCH - /api/comments/:id
-	def update
-		if @comment.update_attributes(comment_update_params)
-			render json: { status: 0, data: @comment }
-		else
-			render json: { status: 2, messages: @comment.errros.first.full_message }
+			render json: { status: 2, messages: comment.errors.first.full_message }
 		end
 	end
 
 	# DELETE - /api/comments/:id
 	def destroy
+	end
+
+	def index
+  		comments = Comment.all
+  		render json: { status: 0, data: comments }
 	end
 
 	private

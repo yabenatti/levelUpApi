@@ -14,7 +14,7 @@ class Api::PostsController < Api::BaseController
 		if post.save
 			render json: { status: 0, data: post }
 		else
-			render json: { status: 2, messages: post.errros.first.full_message }
+			render json: { status: 2, messages: post.errors.first.full_message }
 		end
 	end
 
@@ -23,7 +23,7 @@ class Api::PostsController < Api::BaseController
 		if @post.update_attributes(post_update_params)
 			render json: { status: 0, data: @post }
 		else
-			render json: { status: 2, messages: @post.errros.first.full_message }
+			render json: { status: 2, messages: @post.errors.first.full_message }
 		end
 	end
 

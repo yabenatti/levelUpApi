@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
   	resources :users
 
-  	resources :posts
+  	resources :posts do 
+          resources :comments
+        end
   	get "my_posts" => "posts#my_posts"
   	
-  	resources :comments
 
   	resources :beacons
     get "my_beacons" => "beacons#my_beacons"

@@ -45,7 +45,7 @@
 
 	#allowed to update
 	def user_update_params
-		params.require(:user).permit(:name)
+		params.require(:user).permit(:name, :pet_name, :birth_date)
 	end
 
 	def get_user
