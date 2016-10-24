@@ -17498,3 +17498,34 @@ Processing by Api::LikesController#create as JSON
   [1m[35m (0.5ms)[0m  COMMIT
   [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
 Completed 200 OK in 198ms (Views: 0.2ms | ActiveRecord: 159.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-24 17:11:47 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 9ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-24 17:11:47 -0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-24 17:12:00 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"min.benatti@gmail.com", "password"=>"12345"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "min.benatti@gmail.com"]]
+Completed 500 Internal Server Error in 18ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/sessions" for 127.0.0.1 at 2016-10-24 17:12:10 -0200
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"12345"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user@example.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '128c9a7115787a53804df9b8ee521f4f3a2c60a0' AND "authentication_tokens"."user_id" = 1 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "128c9a7115787a53804df9b8ee521f4f3a2c60a0"], ["last_used_at", "2016-10-24 19:12:10.121301"], ["user_id", 1], ["created_at", "2016-10-24 19:12:10.136938"], ["updated_at", "2016-10-24 19:12:10.136938"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 111ms (Views: 0.3ms | ActiveRecord: 6.2ms)
