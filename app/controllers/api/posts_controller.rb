@@ -1,5 +1,6 @@
 class Api::PostsController < Api::BaseController
 	before_action :get_post, except: [ :create, :index, :my_posts]
+	before_action :set_current_user
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 	# /api/posts/:id			
@@ -40,6 +41,15 @@ class Api::PostsController < Api::BaseController
 		render json: { status: 0, data: current_user.posts }, status: :ok
 	end
 
+	def other_posts
+		user = User.find(params[:id])
+
+		render json:{status: 0, data: user.posts}, status: :ok
+
+		rescue ActiveRecord::RecordNotFound
+			render json:{status: 2, messages: "Not Found"}
+	end
+
 	private
 
 	def post_params
@@ -52,9 +62,14 @@ class Api::PostsController < Api::BaseController
 
 	def get_post
 		@post = Post.find(params[:id])
+		render json: { status: 0, data: @post}, status: :ok
 
 	rescue ActiveRecord::RecordNotFound
 		render json:{status: 2, messages: "Not Found"}
 		
+	end
+
+	def set_current_user
+		Post.current_user = current_user
 	end
 end

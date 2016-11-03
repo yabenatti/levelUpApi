@@ -9,11 +9,12 @@ Rails.application.routes.draw do
           resources :likes
         end
   	get "my_posts" => "posts#my_posts"
-  	
+    get "other_posts/:id" => "posts#other_posts"
 
   	resources :beacons
     get "my_beacons" => "beacons#my_beacons"
 
+    resources :relationships
 
   	resources :sessions, except: [:update, :show]
   end
