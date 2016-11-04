@@ -26,15 +26,23 @@ class User < ApplicationRecord
 
 	validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-		  # Curte um post.
-	  def like!(post)
-	    likes.create!(post_id: post.id)
-	  end
+	# def as_json(options)
+	# 	super(methods: [:pet_image])		
+	# end
 
-	  # Retorna verdadeiro se o curte um determinado post e falso caso contrário.
-	  def likes?(post)
-	    liked_posts.include?(post)
-	  end
+	def pet_image
+		self.beacon.pet_image
+	end
+
+	  # Curte um post.
+	def like!(post)
+	likes.create!(post_id: post.id)
+	end
+
+	# Retorna verdadeiro se o curte um determinado post e falso caso contrário.
+	def likes?(post)
+	liked_posts.include?(post)
+	end
 
 	# def as_json(options)
 	# 	super(except: [:password_digest, :created_at, :updated_at])
