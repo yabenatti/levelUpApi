@@ -26,9 +26,10 @@ class User < ApplicationRecord
 
 	validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-	# def as_json(options)
-	# 	super(methods: [:pet_image])		
-	# end
+
+	def as_json(options=nil)
+		super(methods: [:pet_image])		
+	end
 
 	def pet_image
 		self.beacon.pet_image

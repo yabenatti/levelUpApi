@@ -22452,3 +22452,1511 @@ Processing by Api::PostsController#create as JSON
   [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
   [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
 Completed 200 OK in 86ms (Views: 1.9ms | ActiveRecord: 42.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-07 08:31:43 -0200
+  [1m[36mActiveRecord::SchemaMigration Load (56.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/railties-4.2.7.1/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 34ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/sessions" for 192.168.0.90 at 2016-11-07 08:32:24 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"12345"}
+  [1m[35mUser Load (40.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+Completed 500 Internal Server Error in 327ms (Views: 0.2ms | ActiveRecord: 135.8ms)
+
+
+Started POST "/api/sessions" for 192.168.0.90 at 2016-11-07 08:32:58 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user@example.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (43.8ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'd34a2515ce6311ab6c6b389a42085d294c8288d6' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (40.0ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "d34a2515ce6311ab6c6b389a42085d294c8288d6"], ["last_used_at", "2016-11-07 10:32:58.686073"], ["user_id", 5], ["created_at", "2016-11-07 10:32:58.806903"], ["updated_at", "2016-11-07 10:32:58.806903"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 368ms (Views: 0.3ms | ActiveRecord: 140.8ms)
+
+
+Started GET "/api/my_beacons?uid=5" for 192.168.0.90 at 2016-11-07 08:32:58 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mBeacon Load (59.7ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+Completed 200 OK in 106ms (Views: 0.8ms | ActiveRecord: 61.6ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:32:59 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (58.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (51.2ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 203ms (Views: 44.5ms | ActiveRecord: 115.8ms)
+
+
+Started POST "/api/posts/13/likes?uid=5" for 192.168.0.90 at 2016-11-07 08:34:47 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::LikesController#create as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"13"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (11.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mPost Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT 1[0m  [["user_id", 5], ["id", 13]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (29.3ms)[0m  [1mINSERT INTO "likes" ("user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["post_id", 13], ["created_at", "2016-11-07 10:34:47.455304"], ["updated_at", "2016-11-07 10:34:47.455304"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 13]]
+Completed 200 OK in 70ms (Views: 0.2ms | ActiveRecord: 42.8ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:35:10 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.8ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (1.1ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 29ms (Views: 18.3ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/api/posts/12/likes?uid=5" for 192.168.0.90 at 2016-11-07 08:36:32 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::LikesController#create as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"12"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35mPost Exists (0.3ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT 1  [["user_id", 5], ["id", 12]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "likes" ("user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["post_id", 12], ["created_at", "2016-11-07 10:36:32.334748"], ["updated_at", "2016-11-07 10:36:32.334748"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 12]]
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:36:32 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 16.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:37:20 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 24ms (Views: 17.5ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:38:04 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"I'm testing sharing features", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb2ea7f0388 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161107-835-1jtrjmk.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.8ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "I'm testing sharing features"], ["image", "7babb3dc-851c-4b85-bb05-76b0ef97c45f.jpg"], ["user_id", 5], ["created_at", "2016-11-07 10:38:04.686408"], ["updated_at", "2016-11-07 10:38:04.686408"]]
+  [1m[36m (41.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 78ms (Views: 2.1ms | ActiveRecord: 50.0ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:47:06 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.8ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.8ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.8ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.7ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.8ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.8ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (152.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.6ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 187ms (Views: 24.5ms | ActiveRecord: 160.3ms)
+
+
+Started POST "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:47:29 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"Testing fb share", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb2ea1bea00 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161107-835-9ycsad.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Testing fb share"], ["image", "948e87e9-4373-4767-a3c9-cf71b28c98e9.jpg"], ["user_id", 5], ["created_at", "2016-11-07 10:47:29.947792"], ["updated_at", "2016-11-07 10:47:29.947792"]]
+  [1m[35m (41.3ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 53ms (Views: 2.1ms | ActiveRecord: 42.8ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:59:13 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 27ms (Views: 20.2ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 08:59:39 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"Testing image sharing", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb2ec5f3a60 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161107-835-oiv6o8.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Testing image sharing"], ["image", "db826707-2a7b-4b4c-b085-b71080e38cc3.jpg"], ["user_id", 5], ["created_at", "2016-11-07 10:59:39.865819"], ["updated_at", "2016-11-07 10:59:39.865819"]]
+  [1m[35m (41.1ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 109ms (Views: 1.9ms | ActiveRecord: 42.5ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 09:00:27 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.6ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 30ms (Views: 22.4ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 09:00:40 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#create as JSON
+  Parameters: {"post"=>{"description"=>"More", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fb2ec33a788 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161107-835-1ofxzx7.jpg>, @original_filename="imagem.jpg", @content_type="image/JPEG", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"imagem.jpg\"\r\nContent-Type: image/JPEG\r\n">}, "uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "More"], ["image", "0b9165cb-1e79-4e4b-b94b-876615a989e9.jpg"], ["user_id", 5], ["created_at", "2016-11-07 11:00:40.372305"], ["updated_at", "2016-11-07 11:00:40.372305"]]
+  [1m[36m (41.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 108ms (Views: 2.0ms | ActiveRecord: 42.6ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.90 at 2016-11-07 09:01:35 -0200
+Cannot render console from 192.168.0.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 31ms (Views: 23.6ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:36:01 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/Users/ringasd2/Documents/levelUpApi/app/models/user.rb:65: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/models/user.rb:65: syntax error, unexpected end-of-input, expecting keyword_end
+  app/controllers/api/sessions_controller.rb:5:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (20.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.3ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:36:30 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (40.4ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '0f6b335493824ff3c00e2b666c399aba2f684515' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (81.0ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "0f6b335493824ff3c00e2b666c399aba2f684515"], ["last_used_at", "2016-11-07 18:36:30.520936"], ["user_id", 5], ["created_at", "2016-11-07 18:36:30.619257"], ["updated_at", "2016-11-07 18:36:30.619257"]]
+  [1m[35m (10.2ms)[0m  COMMIT
+Completed 500 Internal Server Error in 448ms (ActiveRecord: 203.3ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:29:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (57.8ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:38:22 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '7041e72cb11d3339a682ba9f2b6f4548cbec71d4' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "7041e72cb11d3339a682ba9f2b6f4548cbec71d4"], ["last_used_at", "2016-11-07 18:38:22.410091"], ["user_id", 5], ["created_at", "2016-11-07 18:38:22.425315"], ["updated_at", "2016-11-07 18:38:22.425315"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 6.6ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:29:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.3ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:39:04 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'a36616f45cc2f173254af734c195e9b0c9550b70' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "a36616f45cc2f173254af734c195e9b0c9550b70"], ["last_used_at", "2016-11-07 18:39:05.153189"], ["user_id", 5], ["created_at", "2016-11-07 18:39:05.169377"], ["updated_at", "2016-11-07 18:39:05.169377"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 6.7ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:30:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.6ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:40:56 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '4ab73a1b4da36f048760aff22645d8123174a154' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "4ab73a1b4da36f048760aff22645d8123174a154"], ["last_used_at", "2016-11-07 18:40:56.654487"], ["user_id", 5], ["created_at", "2016-11-07 18:40:56.670290"], ["updated_at", "2016-11-07 18:40:56.670290"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+Completed 200 OK in 176ms (Views: 0.4ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:41:22 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '064e0e7de6a67806adf572fa93fc1a928add1a72' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "064e0e7de6a67806adf572fa93fc1a928add1a72"], ["last_used_at", "2016-11-07 18:41:22.451471"], ["user_id", 5], ["created_at", "2016-11-07 18:41:22.467527"], ["updated_at", "2016-11-07 18:41:22.467527"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+Completed 200 OK in 144ms (Views: 0.5ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 16:41:55 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.1ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/models/user.rb:30:in `as_json'
+  app/controllers/api/users_controller.rb:8:in `show'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.5ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 16:43:01 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.7ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 5.7ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/models/user.rb:34:in `as_json'
+  app/controllers/api/users_controller.rb:8:in `show'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (39.5ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:43:05 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user@example.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '29464edf6222837c0a66bcbf91605750b050ca54' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "29464edf6222837c0a66bcbf91605750b050ca54"], ["last_used_at", "2016-11-07 18:43:05.938259"], ["user_id", 5], ["created_at", "2016-11-07 18:43:05.948139"], ["updated_at", "2016-11-07 18:43:05.948139"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBeacon Load (0.4ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+Completed 200 OK in 105ms (Views: 0.4ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 16:44:31 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.1ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/models/user.rb:34:in `as_json'
+  app/controllers/api/users_controller.rb:8:in `show'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.7ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 16:45:42 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 5.4ms)
+
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  app/models/user.rb:34:in `as_json'
+  app/controllers/api/users_controller.rb:8:in `show'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.8ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 16:46:07 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+Completed 200 OK in 79ms (Views: 13.3ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.103 at 2016-11-07 16:49:34 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.4ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 163ms (Views: 69.7ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:49:41 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+Completed   in 147ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:49:50 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mComment Load (62.2ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 72ms (Views: 1.6ms | ActiveRecord: 63.8ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:49:50 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments"
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/posts/6/comments?uid=5" for 127.0.0.1 at 2016-11-07 16:50:14 -0200
+Processing by Api::CommentsController#create as JSON
+  Parameters: {"comment"=>{"description"=>"test comment 2"}, "uid"=>"5", "post_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (18.9ms)[0m  [1mINSERT INTO "comments" ("user_id", "description", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 5], ["description", "test comment 2"], ["post_id", 6], ["created_at", "2016-11-07 18:50:14.078079"], ["updated_at", "2016-11-07 18:50:14.078079"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 41ms (Views: 2.8ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:50:16 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/sessions" for 192.168.0.106 at 2016-11-07 16:51:48 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.5ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '35bc54bb052d5ad690c3acfb0dae9db50e58f27e' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "35bc54bb052d5ad690c3acfb0dae9db50e58f27e"], ["last_used_at", "2016-11-07 18:51:48.406373"], ["user_id", 5], ["created_at", "2016-11-07 18:51:48.418199"], ["updated_at", "2016-11-07 18:51:48.418199"]]
+  [1m[35m (126.5ms)[0m  COMMIT
+Completed 500 Internal Server Error in 218ms (ActiveRecord: 128.1ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:30:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.6ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:52:25 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.7ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = 'ce4f34ae9abea3b93307090e680f64657a1fd1b2' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "ce4f34ae9abea3b93307090e680f64657a1fd1b2"], ["last_used_at", "2016-11-07 18:52:25.940696"], ["user_id", 5], ["created_at", "2016-11-07 18:52:25.956958"], ["updated_at", "2016-11-07 18:52:25.956958"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 7.0ms)
+
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  app/models/user.rb:30:in `as_json'
+  app/controllers/api/sessions_controller.rb:9:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.5ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.0ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 16:52:51 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '408f10f766ea0da3beb343bbc04b737731200325' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "408f10f766ea0da3beb343bbc04b737731200325"], ["last_used_at", "2016-11-07 18:52:51.780000"], ["user_id", 5], ["created_at", "2016-11-07 18:52:51.795727"], ["updated_at", "2016-11-07 18:52:51.795727"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Completed 200 OK in 128ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/sessions" for 192.168.0.106 at 2016-11-07 16:53:04 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user@example.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '8b6d1980471f5e692faf21fb7b545e0a70340fe3' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "8b6d1980471f5e692faf21fb7b545e0a70340fe3"], ["last_used_at", "2016-11-07 18:53:04.079675"], ["user_id", 5], ["created_at", "2016-11-07 18:53:04.082173"], ["updated_at", "2016-11-07 18:53:04.082173"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/my_beacons?uid=5" for 192.168.0.106 at 2016-11-07 16:53:04 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#my_beacons as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mBeacon Load (0.4ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+Completed 200 OK in 31ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 16:53:04 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.5ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.4ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 63ms (Views: 44.4ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.106 at 2016-11-07 16:53:20 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 12ms (Views: 5.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 16:53:29 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 37ms (Views: 28.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/api/posts/7/comments?uid=5" for 192.168.0.106 at 2016-11-07 16:53:33 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 16:53:38 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 24.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/posts/8/comments?uid=5" for 192.168.0.106 at 2016-11-07 16:53:43 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 16:53:59 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 32ms (Views: 24.5ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/posts/8/comments?uid=5" for 192.168.0.106 at 2016-11-07 16:54:54 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mComment Load (152.4ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 157ms (Views: 1.4ms | ActiveRecord: 152.9ms)
+
+
+Started GET "/api/posts/8/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:55:30 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (1.0ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/posts/9/comments?uid=5" for 192.168.0.103 at 2016-11-07 16:55:46 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 16:59:40 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 38ms (Views: 30.4ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.106 at 2016-11-07 16:59:57 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_posts?uid=5" for 192.168.0.106 at 2016-11-07 16:59:57 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 21ms (Views: 12.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 17:02:33 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 33ms (Views: 25.2ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 17:04:25 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 34ms (Views: 25.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 17:04:54 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 33ms (Views: 25.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.106 at 2016-11-07 17:05:10 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/my_posts?uid=5" for 192.168.0.106 at 2016-11-07 17:05:10 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1  [["user_id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 21ms (Views: 13.8ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 17:06:55 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.6ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.9ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 40ms (Views: 31.5ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.106 at 2016-11-07 17:07:05 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/my_posts?uid=5" for 192.168.0.106 at 2016-11-07 17:07:05 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#my_posts as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 12.8ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/posts?uid=5" for 192.168.0.106 at 2016-11-07 17:08:39 -0200
+Cannot render console from 192.168.0.106! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 5 LIMIT 1
+Completed 200 OK in 36ms (Views: 27.4ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-07 17:09:38 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user@example.com", "password"=>"123456"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.6ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '06660318ed48db99be3e332d098804054be93afc' AND "authentication_tokens"."user_id" = 5 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "06660318ed48db99be3e332d098804054be93afc"], ["last_used_at", "2016-11-07 19:09:39.307145"], ["user_id", 5], ["created_at", "2016-11-07 19:09:39.323688"], ["updated_at", "2016-11-07 19:09:39.323688"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.5ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+Completed 200 OK in 143ms (Views: 0.5ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-07 17:09:42 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+Completed 200 OK in 23ms (Views: 1.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/posts/9/comments?uid=5" for 192.168.0.103 at 2016-11-07 17:10:01 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"9"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 20ms (Views: 9.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/posts/9/comments?uid=5" for 192.168.0.103 at 2016-11-07 17:12:30 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"9"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+Completed 200 OK in 54ms (Views: 1.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/posts/6/comments?uid=5" for 192.168.0.103 at 2016-11-07 17:12:46 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"uid"=>"5", "post_id"=>"6"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.5ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 15ms (Views: 7.2ms | ActiveRecord: 2.5ms)

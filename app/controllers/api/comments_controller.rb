@@ -1,5 +1,6 @@
 class Api::CommentsController < Api::BaseController
 	before_action :get_comment, except: [ :create, :index]
+	before_action :set_current_user
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 	# /api/comments/:id			
@@ -24,7 +25,8 @@ class Api::CommentsController < Api::BaseController
 	end
 
 	def index
-  		comments = Comment.all
+		post = Post.find(params[:post_id])
+  		comments = post.comments
   		render json: { status: 0, data: comments }
 	end
 
@@ -44,5 +46,9 @@ class Api::CommentsController < Api::BaseController
 	rescue ActiveRecord::RecordNotFound
 		render json:{status: 2, messages: "Not Found"}
 		
+	end
+
+	def set_current_user
+		Comment.current_user = current_user
 	end
 end
