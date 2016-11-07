@@ -32,7 +32,9 @@ class User < ApplicationRecord
 	end
 
 	def pet_image
-		self.beacon.pet_image
+		if(self.beacon.present?)
+			self.beacon.pet_image
+		end
 	end
 
 	  # Curte um post.
