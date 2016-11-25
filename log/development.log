@@ -23976,3 +23976,689 @@ Processing by Api::UsersController#create as JSON
   [1m[35m (0.6ms)[0m  COMMIT
   [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
 Completed 200 OK in 160ms (Views: 0.4ms | ActiveRecord: 31.5ms)
+
+
+Started GET "/api/users/5?uid=5" for 192.168.0.103 at 2016-11-25 17:27:19 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (78.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"5"}
+  [1m[35mUser Load (89.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (23.6ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (69.0ms)[0m  [1mUPDATE "authentication_tokens" SET "last_used_at" = $1, "updated_at" = $2 WHERE "authentication_tokens"."id" = $3[0m  [["last_used_at", "2016-11-25 19:27:21.742186"], ["updated_at", "2016-11-25 19:27:21.756322"], ["id", 19]]
+  [1m[35m (36.6ms)[0m  COMMIT
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (48.8ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+Completed 200 OK in 640ms (Views: 38.7ms | ActiveRecord: 452.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started POST "/api/users" for 192.168.0.103 at 2016-11-25 17:28:18 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"user45@example.com", "password"=>"12345", "pet_name"=>"Kedim"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (57.4ms)[0m  INSERT INTO "users" ("email", "password_digest", "pet_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["email", "user45@example.com"], ["password_digest", "$2a$10$DXoMHJIeLe7Ps8wxvCLB8u5Q/gBqWdJKwAw8W4xkfr5BqrL7cAXhm"], ["pet_name", "Kedim"], ["created_at", "2016-11-25 19:28:18.964592"], ["updated_at", "2016-11-25 19:28:18.964592"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (3.2ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (51.9ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '7200ba9956b2ea7f3979ab1394794951595f8f1c' AND "authentication_tokens"."user_id" = 8 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (21.2ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "7200ba9956b2ea7f3979ab1394794951595f8f1c"], ["last_used_at", "2016-11-25 19:28:19.025872"], ["user_id", 8], ["created_at", "2016-11-25 19:28:19.129762"], ["updated_at", "2016-11-25 19:28:19.129762"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 8]]
+Completed 200 OK in 270ms (Views: 0.5ms | ActiveRecord: 135.1ms)
+
+
+Started GET "/api/users/8?uid=5" for 192.168.0.103 at 2016-11-25 17:28:32 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.5ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 8]]
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/8?uid=5" for 192.168.0.103 at 2016-11-25 17:35:45 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"8"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mBeacon Load (0.6ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 8]]
+  [1m[35mUser Load (56.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 8]]
+Completed 200 OK in 159ms (Views: 36.6ms | ActiveRecord: 65.0ms)
+
+
+Started GET "/api/users/8?uid=5" for 192.168.0.103 at 2016-11-25 17:36:18 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"8"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 8]]
+  [1m[35mRelationship Load (0.4ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = 8 LIMIT 1  [["follower_id", 8]]
+Completed 200 OK in 79ms (Views: 12.7ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/api/users/8?uid=5" for 192.168.0.103 at 2016-11-25 17:36:56 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"5", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 5]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 8]]
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = 8 LIMIT 1[0m  [["follower_id", 8]]
+Completed 200 OK in 45ms (Views: 12.9ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-25 17:37:44 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user45@example.com", "password"=>"12345"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "user45@example.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAuthenticationToken Exists (0.5ms)[0m  SELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '5fa0219517a6ccb11164dfff7ab05871e580080b' AND "authentication_tokens"."user_id" = 7 AND "authentication_tokens"."platform" = 0) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["platform", 0], ["authentication_token", "5fa0219517a6ccb11164dfff7ab05871e580080b"], ["last_used_at", "2016-11-25 19:37:44.318722"], ["user_id", 7], ["created_at", "2016-11-25 19:37:44.335198"], ["updated_at", "2016-11-25 19:37:44.335198"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = 7 LIMIT 1  [["follower_id", 7]]
+Completed 200 OK in 92ms (Views: 0.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:38:04 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (1.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.3ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = 5 LIMIT 1[0m  [["follower_id", 5]]
+Completed 200 OK in 16ms (Views: 10.0ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/api/relationships?uid=7" for 192.168.0.103 at 2016-11-25 17:38:39 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::RelationshipsController#create as JSON
+  Parameters: {"user_id"=>"5", "uid"=>"7"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (83.4ms)[0m  INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["followed_id", 5], ["follower_id", 7], ["created_at", "2016-11-25 19:38:39.795160"], ["updated_at", "2016-11-25 19:38:39.795160"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 95ms (Views: 0.2ms | ActiveRecord: 85.4ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:38:43 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.8ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.6ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mRelationship Load (0.6ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = 5 LIMIT 1  [["follower_id", 5]]
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:43:04 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mRelationship Load (0.4ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."followed_id" = 7 LIMIT 1  [["followed_id", 5]]
+Completed 200 OK in 84ms (Views: 17.0ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/api/relationships?uid=7" for 192.168.0.103 at 2016-11-25 17:43:12 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::RelationshipsController#create as JSON
+  Parameters: {"user_id"=>"5", "uid"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (41.7ms)[0m  [1mINSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["followed_id", 5], ["follower_id", 7], ["created_at", "2016-11-25 19:43:12.696780"], ["updated_at", "2016-11-25 19:43:12.696780"]]
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 43.7ms)
+
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_relationships_on_follower_id_and_followed_id"
+DETAIL:  Key (follower_id, followed_id)=(7, 5) already exists.
+: INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"):
+  app/models/user.rb:57:in `follow!'
+  app/controllers/api/relationships_controller.rb:5:in `create'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.9ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:43:34 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mRelationship Load (0.4ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."follower_id" = 7 LIMIT 1  [["followed_id", 5]]
+Completed 200 OK in 93ms (Views: 21.7ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:47:37 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mRelationship Load (0.4ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."follower_id" = 7 LIMIT 1  [["followed_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "relationships" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 5]]
+Completed 200 OK in 240ms (Views: 173.9ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:48:17 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.3ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mRelationship Load (0.3ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."follower_id" = 7 LIMIT 1  [["followed_id", 5]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "relationships" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 5]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1  [["follower_id", 5]]
+Completed 200 OK in 65ms (Views: 30.5ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/users/5?uid=7" for 192.168.0.103 at 2016-11-25 17:48:30 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::UsersController#show as JSON
+  Parameters: {"uid"=>"7", "id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."follower_id" = 7 LIMIT 1[0m  [["followed_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "relationships" WHERE "relationships"."followed_id" = $1  [["followed_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "relationships" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 5]]
+Completed 200 OK in 56ms (Views: 25.5ms | ActiveRecord: 7.5ms)
+
+
+Started DELETE "/api/sessions/7?uid=7" for 192.168.0.103 at 2016-11-25 17:49:06 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"id"=>"7", "uid"=>"7"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.9ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "authentication_tokens" WHERE "authentication_tokens"."id" = $1[0m  [["id", 28]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/sessions" for 192.168.0.103 at 2016-11-25 17:50:16 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"email"=>"user45@example.com", "password"=>"12345"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "user45@example.com"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mAuthenticationToken Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "authentication_tokens" WHERE ("authentication_tokens"."authentication_token" = '6f62a3f02c8bb7719661f5a3846a3ebcbe3f0ebc' AND "authentication_tokens"."user_id" = 7 AND "authentication_tokens"."platform" = 0) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "authentication_tokens" ("platform", "authentication_token", "last_used_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["platform", 0], ["authentication_token", "6f62a3f02c8bb7719661f5a3846a3ebcbe3f0ebc"], ["last_used_at", "2016-11-25 19:50:16.964004"], ["user_id", 7], ["created_at", "2016-11-25 19:50:16.972460"], ["updated_at", "2016-11-25 19:50:16.972460"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 7]]
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."followed_id" = $1 AND "relationships"."follower_id" = 7 LIMIT 1[0m  [["followed_id", 7]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "relationships" WHERE "relationships"."followed_id" = $1  [["followed_id", 7]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "relationships" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 7]]
+Completed 200 OK in 90ms (Views: 0.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/posts?uid=7" for 192.168.0.103 at 2016-11-25 17:51:02 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"7"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.7ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mPost Load (58.7ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 6]]
+  [1m[36mLike Load (90.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 7 LIMIT 1
+Completed 200 OK in 262ms (Views: 47.0ms | ActiveRecord: 157.3ms)
+
+
+Started POST "/api/posts/6/likes?uid=7" for 192.168.0.103 at 2016-11-25 17:51:13 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::LikesController#create as JSON
+  Parameters: {"uid"=>"7", "post_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.4ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mPost Load (44.8ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mPost Exists (0.4ms)[0m  SELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT 1  [["user_id", 7], ["id", 6]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (27.1ms)[0m  INSERT INTO "likes" ("user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 7], ["post_id", 6], ["created_at", "2016-11-25 19:51:13.271580"], ["updated_at", "2016-11-25 19:51:13.271580"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 6]]
+Completed 200 OK in 94ms (Views: 0.2ms | ActiveRecord: 74.3ms)
+
+
+Started GET "/api/posts?uid=7" for 192.168.0.103 at 2016-11-25 17:51:16 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::PostsController#index as JSON
+  Parameters: {"uid"=>"7"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.5ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 6]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 6 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBeacon Load (0.2ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.9ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 7 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 8 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.8ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 9 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.6ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 10 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 11 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.5ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 12 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.6ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 13 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 14 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 15 AND "likes"."user_id" = 7 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 5]]
+  [1m[35mLike Load (0.4ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 16 AND "likes"."user_id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1  [["user_id", 5]]
+  [1m[36mLike Load (0.4ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = 17 AND "likes"."user_id" = 7 LIMIT 1[0m
+Completed 200 OK in 54ms (Views: 40.6ms | ActiveRecord: 10.1ms)
+
+
+Started DELETE "/api/posts/6/likes?uid=7" for 192.168.0.103 at 2016-11-25 17:52:06 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [DELETE] "/api/posts/6/likes"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (24.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (106.0ms)
+
+
+Started DELETE "/api/posts/6/likes/7?uid=7" for 192.168.0.103 at 2016-11-25 18:01:59 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [DELETE] "/api/posts/6/likes/7"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (51.8ms)
+
+
+Started DELETE "/api/posts/6/likes?uid=7" for 192.168.0.103 at 2016-11-25 18:02:08 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::LikesController#destroy as JSON
+  Parameters: {"uid"=>"7", "post_id"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.2ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 4.2ms)
+
+NoMethodError (undefined method `get_comment' for #<Api::LikesController:0x007fd6f535d350>):
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.7.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.7.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.7.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.7.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.7.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.7.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.7.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.7.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.7.1) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack-parser (0.7.0) lib/rack/parser.rb:26:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.7.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.7.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.7.1) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.7.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.6ms)
+
+
+Started DELETE "/api/posts/6/likes?uid=7" for 192.168.0.103 at 2016-11-25 18:08:02 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::LikesController#destroy as JSON
+  Parameters: {"uid"=>"7", "post_id"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36mAuthenticationToken Load (0.4ms)[0m  [1mSELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mLike Load (0.5ms)[0m  [1mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = 7 AND "likes"."post_id" = 6 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 76ms (Views: 0.2ms | ActiveRecord: 9.2ms)
+
+
+Started PATCH "/api/beacons?uid=7" for 192.168.0.103 at 2016-11-25 18:13:19 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [PATCH] "/api/beacons"):
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (3.3.0) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (3.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.7.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.7.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.7.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.7.1) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.7.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.7.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.4ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.0ms)
+
+
+Started POST "/api/beacons?uid=7" for 127.0.0.1 at 2016-11-25 18:14:24 -0200
+Processing by Api::BeaconsController#create as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"37813", "minor"=>"47798"}, "uid"=>"7"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mBeacon Load (0.3ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."user_id" = $1 LIMIT 1[0m  [["user_id", 7]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (19.2ms)[0m  [1mINSERT INTO "beacons" ("unique_id", "minor", "major", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["unique_id", "B9407F30-F5F8-466E-AFF9-25556B57FE6D"], ["minor", "47798"], ["major", "37813"], ["user_id", 7], ["created_at", "2016-11-25 20:14:24.434099"], ["updated_at", "2016-11-25 20:14:24.434099"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 200 OK in 74ms (Views: 0.4ms | ActiveRecord: 25.8ms)
+
+
+Started PATCH "/api/beacons/6/?uid=7" for 192.168.0.103 at 2016-11-25 18:14:48 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#update as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"2", "minor"=>"3", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fa317610ca8 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161125-5206-1bdbuno.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"7", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms)
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/api/beacons_controller.rb:21:in `update'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.0ms)
+
+
+Started PATCH "/api/beacons/6?uid=7" for 192.168.0.103 at 2016-11-25 18:14:52 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#update as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"2", "minor"=>"3", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fa317779068 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161125-5206-14xkaih.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"7", "id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.8ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.4ms)
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/api/beacons_controller.rb:21:in `update'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (36.0ms)
+  [1m[36mBeacon Load (0.4ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."id" = $1 LIMIT 1[0m  [["id", 6]]
+
+
+Started PATCH "/api/beacons/6?uid=7" for 192.168.0.103 at 2016-11-25 18:18:11 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#update as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"2", "minor"=>"3", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fa314c5ed60 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161125-5206-w9tit8.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"7", "id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.5ms)
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/api/beacons_controller.rb:21:in `update'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.3ms)
+
+
+Started PATCH "/api/beacons/6?uid=7" for 192.168.0.103 at 2016-11-25 18:18:44 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#update as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"2", "minor"=>"3", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fa317481b58 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161125-5206-rzj997.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"7", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.3ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.4ms)
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/api/beacons_controller.rb:21:in `update'
+
+
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/ringasd2/.rvm/gems/ruby-2.3.0@level_up/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.8ms)
+
+
+Started PATCH "/api/beacons/6?uid=7" for 192.168.0.103 at 2016-11-25 18:19:31 -0200
+Cannot render console from 192.168.0.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Api::BeaconsController#update as JSON
+  Parameters: {"beacon"=>{"unique_id"=>"B9407F30-F5F8-466E-AFF9-25556B57FE6D", "major"=>"2", "minor"=>"3", "pet_image"=>#<ActionDispatch::Http::UploadedFile:0x007fa31448f968 @tempfile=#<Tempfile:/var/folders/5t/3y6g1xmj6fq_mc1l5hzxf0nm0000gn/T/RackMultipart20161125-5206-krh0oi.png>, @original_filename="Icon 164.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"beacon[pet_image]\"; filename=\"Icon 164.png\"\r\nContent-Type: image/png\r\n">}, "uid"=>"7", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mAuthenticationToken Load (0.2ms)[0m  SELECT "authentication_tokens".* FROM "authentication_tokens" WHERE "authentication_tokens"."user_id" = $1  [["user_id", 7]]
+  [1m[36mBeacon Load (0.2ms)[0m  [1mSELECT  "beacons".* FROM "beacons" WHERE "beacons"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "beacons" SET "minor" = $1, "major" = $2, "pet_image" = $3, "updated_at" = $4 WHERE "beacons"."id" = $5[0m  [["minor", "3"], ["major", "2"], ["pet_image", "00eb65d2-b5e0-4e1f-afd0-a5d5767f37f1.png"], ["updated_at", "2016-11-25 20:19:31.986610"], ["id", 6]]
+  [1m[35m (39.9ms)[0m  COMMIT
+Completed 200 OK in 84ms (Views: 0.5ms | ActiveRecord: 44.9ms)

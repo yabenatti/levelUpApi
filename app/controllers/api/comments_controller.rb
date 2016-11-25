@@ -1,4 +1,4 @@
-class Api::CommentsController < Api::BaseController
+ class Api::CommentsController < Api::BaseController
 	before_action :get_comment, except: [ :create, :index]
 	before_action :set_current_user
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]

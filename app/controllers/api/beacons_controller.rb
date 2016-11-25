@@ -1,5 +1,5 @@
 class Api::BeaconsController < Api::BaseController
-	before_action :get_beacon, except: [ :create, :index, :my_beacons]
+	before_action :get_beacon, except: [ :create, :index, :my_beacons, :update]
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 
@@ -14,6 +14,16 @@ class Api::BeaconsController < Api::BaseController
 			render json: { status: 0, data: beacon }
 		else
 			render json: { status: 2, messages: beacon.errros.first.full_message }
+		end
+	end
+
+	def update
+		@beacon = Beacon.find(params[:id])
+
+		if @beacon.update_attributes(beacon_params)
+			render json: { status: 0, data: @beacon}
+		else
+			render json: { status: 2, messages: @beacon.errros.first.full_message}
 		end
 	end
 
@@ -39,6 +49,7 @@ class Api::BeaconsController < Api::BaseController
 
 	def get_beacon
 		@beacon = Beacon.find(params[:id])
+		puts "AUGUSTO"
 
 	rescue ActiveRecord::RecordNotFound
 		render json: { status: 2, messages: "Not found" }

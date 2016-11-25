@@ -20,6 +20,8 @@ class User < ApplicationRecord
 	has_many :likes, dependent: :destroy
   	has_many :liked_posts, through: :likes, source: :post, dependent: :destroy
 
+	attr_accessor :current_user
+
 	validates_presence_of :email
 
 	has_secure_password
@@ -28,7 +30,7 @@ class User < ApplicationRecord
 
 
 	def as_json(options=nil)
-		super(methods: [:pet_image])		
+		super(methods: [:pet_image, :am_i_following, :count_passive_relationships, :count_active_relationships])		
 	end
 
 	def pet_image
@@ -39,12 +41,12 @@ class User < ApplicationRecord
 
 	  # Curte um post.
 	def like!(post)
-	likes.create!(post_id: post.id)
+		likes.create!(post_id: post.id)
 	end
 
 	# Retorna verdadeiro se o curte um determinado post e falso caso contrário.
 	def likes?(post)
-	liked_posts.include?(post)
+		liked_posts.include?(post)
 	end
 
 	# def as_json(options)
@@ -63,5 +65,26 @@ class User < ApplicationRecord
 	# Retorna verdadeiro se o usuário em questão está seguindo o outro usuário.
 	def following?(other_user)
 		following.include?(other_user)
+	end
+
+	# Verificar se o current_user segue o usuario sendo acessado
+	def am_i_following
+		passive_relationships.find_by(follower_id: User.current_user).present?
+	end
+
+	def count_passive_relationships
+		passive_relationships.count
+	end
+
+	def count_active_relationships
+		active_relationships.count
+	end
+
+	def self.current_user=(user)
+		@current_user = user
+	end
+
+	def self.current_user
+		@current_user
 	end
 end

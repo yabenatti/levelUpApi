@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   	resources :posts do 
           resources :comments
-          resources :likes
+          resources :likes, except: [:destroy]
+          delete "likes" => "likes#destroy"
         end
   	get "my_posts" => "posts#my_posts"
     get "other_posts/:id" => "posts#other_posts"

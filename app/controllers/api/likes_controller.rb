@@ -1,5 +1,4 @@
 class Api::LikesController <  Api::BaseController
-	before_action :get_comment, except: [ :create, :index]
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
 	def create
@@ -17,6 +16,13 @@ class Api::LikesController <  Api::BaseController
 
     def destroy
         post = Post.find(params[:post_id])
+        like = Like.find_by(user: current_user, post: post)
+
+        if like.destroy
+            render json: {status: 0, data: nil}
+        else 
+            render json: {status: 3, message: "NOPE"}
+        end
     end
 
     def index

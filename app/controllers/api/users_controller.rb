@@ -1,5 +1,6 @@
 	class Api::UsersController < Api::BaseController
 	before_action :get_user, except: [ :create, :my_posts, :my_beacons]
+	before_action :set_current_user
 	skip_before_filter :authenticate!, only: [:create]
 
 
@@ -53,6 +54,10 @@
 
 	rescue ActiveRecord::RecordNotFound
 		render json: { status: 2, messages: "Not found" }
+	end
+
+	def set_current_user
+		User.current_user = current_user
 	end
 
 end
