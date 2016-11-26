@@ -9,11 +9,17 @@ class Comment < ApplicationRecord
   	attr_accessor :current_user
 
 	def as_json(options)
-		super(methods: [:pet_name])		
+		super(methods: [:pet_name, :pet_image])		
 	end
 
 	def pet_name
 		self.user.pet_name
+	end
+
+	def pet_image
+		if(self.user.beacon.present?)
+			self.user.beacon.pet_image
+		end
 	end
 
   	def self.current_user=(user)
