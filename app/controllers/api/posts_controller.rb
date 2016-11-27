@@ -1,5 +1,5 @@
 class Api::PostsController < Api::BaseController
-	before_action :get_post, except: [ :create, :index, :my_posts]
+	before_action :get_post, except: [ :create, :index, :my_posts, :other_posts]
 	before_action :set_current_user
 	skip_before_filter :verify_authenticity_token, :only => [:create, :show, :destroy]
 
